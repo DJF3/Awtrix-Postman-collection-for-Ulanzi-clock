@@ -1,0 +1,951 @@
+{
+	"info": {
+		"_postman_id": "ca34e644-cdb5-4782-9fc2-423185d78e39",
+		"name": "Awtrix Ulanzi",
+		"description": "Go to the \"VARIABLES\" tab and enter the IP address of your Ulanzi clock. If your clock is not running the \"awtrix\" firmware, then follow [<b>these instructions</b>](https://blueforcer.github.io/awtrix-light/#/quickstart).\n\n**More information**:\n\n[https://blueforcer.github.io/awtrix-light/#/api](https://blueforcer.github.io/awtrix-light/#/api)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14979547"
+	},
+	"item": [
+		{
+			"name": "STATUS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/stats",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "General device stats (e.g., battery, RAM)"
+			},
+			"response": []
+		},
+		{
+			"name": "STATUS effects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/effects",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"effects"
+					]
+				},
+				"description": "List of all effects"
+			},
+			"response": []
+		},
+		{
+			"name": "STATUS transitions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/transitions",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"transitions"
+					]
+				},
+				"description": "List of all transition effects"
+			},
+			"response": []
+		},
+		{
+			"name": "STATUS loop",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/loop",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"loop"
+					]
+				},
+				"description": "List of all apps in the loop. Use this to see where you can \"switch\" to and what the order is."
+			},
+			"response": []
+		},
+		{
+			"name": "STATUS liveview screen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/screen",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"screen"
+					]
+				},
+				"description": "Retrieve the current matrix screen as an array of 24bit colors"
+			},
+			"response": []
+		},
+		{
+			"name": "POWER on",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"power\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/power",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"power"
+					]
+				},
+				"description": "Toggle the matrix on or off. This does NOT turn off the device, just the screen."
+			},
+			"response": []
+		},
+		{
+			"name": "POWER off",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"power\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/power",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"power"
+					]
+				},
+				"description": "Toggle the matrix on or off. This does NOT turn off the device, just the screen."
+			},
+			"response": []
+		},
+		{
+			"name": "SOUND playback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sound\": \"melodies_filename_here_without_dottxt\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/sound",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"sound"
+					]
+				},
+				"description": "Play a RTTTL sound from the MELODIES folder. Check out this URL to see the files: [http://IPADDRESS/edit](http://IPADDRESS/edit) and click the \"melodies\" folder."
+			},
+			"response": []
+		},
+		{
+			"name": "SOUND rtttl",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "s:d=4,o=5,b=300:g#,g#,d#,d#",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/rtttl",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"rtttl"
+					]
+				},
+				"description": "Play a RTTTL sound from a given RTTTL string. For examples go here: [https://www.laub-home.de/wiki/RTTTL_Songs](https://www.laub-home.de/wiki/RTTTL_Songs)"
+			},
+			"response": []
+		},
+		{
+			"name": "MOOD light",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"brightness\": 100,\n    \"color\": \"#FF00FF\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/moodlight",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"moodlight"
+					]
+				},
+				"description": "**Set the entire matrix to a custom color or temperature**.  \n_Caution_: Using this function results in a higher current draw and heat, especially when all pixels are lit. Ensure you manage brightness values responsibly."
+			},
+			"response": []
+		},
+		{
+			"name": "MOOD light OFF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/moodlight",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"moodlight"
+					]
+				},
+				"description": "To disable moodlight, send an empty payload"
+			},
+			"response": []
+		},
+		{
+			"name": "INDICATOR 1 color blink RGB blue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\": [\n        255,\n        0,\n        0\n    ],\n    \"blink\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/indicator1",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"indicator1"
+					]
+				},
+				"description": "Colored indicators serve as small notification signs displayed on specific areas of the screen:\n\n- **Indicator 1:** Upper right corner\n    \n- **Indicator 2:** Right side\n    \n- **Indicator 3:** Lower right corner\n    \n\n**Color options**:\n\n- `{\"color\":[255,0,0]}`\n    \n- `{\"color\":\"#32a852\"}`\n    \n\n**Effects**\n\n- Blink\n    \n- Fade"
+			},
+			"response": []
+		},
+		{
+			"name": "INDICATOR 1 off",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\": [\n        0,\n        0,\n        0\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/indicator1",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"indicator1"
+					]
+				},
+				"description": "To hide the indicators, send the color black `{\"color\":[0,0,0]}` or use the shorthand `{\"color\":\"0\"}`. Alternatively, send an empty payload."
+			},
+			"response": []
+		},
+		{
+			"name": "INDICATOR 2 color fade HEX green",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\": \"#00FF00\",\n    \"fade\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/indicator2",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"indicator2"
+					]
+				},
+				"description": "Colored indicators serve as small notification signs displayed on specific areas of the screen:\n\n- **Indicator 1:** Upper right corner\n    \n- **Indicator 2:** Right side\n    \n- **Indicator 3:** Lower right corner\n    \n\n**Color options**:\n\n- `{\"color\":[255,0,0]}`\n    \n- `{\"color\":\"#32a852\"}`\n    \n\n**Effects**\n\n- Blink\n    \n- Fade"
+			},
+			"response": []
+		},
+		{
+			"name": "INDICATOR 2 off",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\": \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/indicator2",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"indicator2"
+					]
+				},
+				"description": "To hide the indicators, send the color black `{\"color\":[0,0,0]}` or use the shorthand `{\"color\":\"0\"}`. Alternatively, send an empty payload"
+			},
+			"response": []
+		},
+		{
+			"name": "INDICATOR 3 color HEX blue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\": \"#0000FF\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/indicator3",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"indicator3"
+					]
+				},
+				"description": "Colored indicators serve as small notification signs displayed on specific areas of the screen:\n\n- **Indicator 1:** Upper right corner\n    \n- **Indicator 2:** Right side\n    \n- **Indicator 3:** Lower right corner\n    \n\n**Color options**:\n\n- `{\"color\":[255,0,0]}`\n    \n- `{\"color\":\"#32a852\"}`\n    \n\n**Effects**\n\n- Blink\n    \n- Fade"
+			},
+			"response": []
+		},
+		{
+			"name": "INDICATOR 3 off",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\": \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/indicator3",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"indicator3"
+					]
+				},
+				"description": "To hide the indicators, send the color black `{\"color\":[0,0,0]}` or use the shorthand `{\"color\":\"0\"}`. Alternatively, send an empty payload"
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"Hello, CUSTOM app!\",\n  \"rainbow\": true,\n  \"duration\": 10\n}\n// this will go to the \"back\" of the app list\n// the app name is defined in the URL (name=yourappname)",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/custom?name=yourappname",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"custom"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "yourappname"
+						}
+					]
+				},
+				"description": "**Guideline**: use APPs for something that is used regularly. Use NOTIFICATIONS for onetime or irregular messages.\n\n**Create App**: Incorporate the app name in the query parameter (name=\\[appname\\]).\n\n**Update App**: To refresh a custom page, dispatch a modified JSON object to the identical endpoint. The display updates instantly.\n\nCheck out the \"full_options\" API call to see all possibilities."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP add full_options",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"Hello, Full options CUSTOM app! Not all options are enabled\",\n  \"textCase\": 0,  // 0=global, 1=upper, 2=as is\n  \"topText\": false,  // default\n  \"textOffset\": 0,\n  \"center\": false,  // for non-scrollable text\n  \"color\": \"#FFFF00\",  // hex or rgb\n  \"blinkText\": 0,  // time in ms\n  \"fadeText\": 0,  // time in ms\n  \"background\": \"#808080\",\n  \"rainbow\": false,\n  \"icon\": \"classictetriscolor1\",\n  \"pushIcon\": 0,  // 0=icon fixed, 1=icon moves and disappears, 2=icon moves but comes back\n  \"repeat\": 1,  // -1 = indefinetely, number is number of times before the app ends\n  \"duration\": 10,  //\n   \"pos\": 0,\n   //\"bar\": [0,0,0,0,0,0,0,0,1,2,3,4],\n   //\"line\": [9,9,7,7,8,8,\"#FF00FF\"],\n   \"autoScale\": true,\n   \"progress\": 60,\n   \"progressC\": \"#0000FF\",\n   \"progressBC\": \"#C0C0C0\",\n   //\"pos\": 2,  // position of app in custom loop\n   \"draw\": [  \n        {\"dc\": [28, 4, 3, \"#FF0000\"]},  \n        {\"dr\": [20, 4, 4, 4, \"#0000FF\"]},  \n        {\"dt\": [0, 0, \"Hello\", \"#00FF00\"]}  \n        ],  // \n   //\"lifetime\": 10,  // removes app after x seconds\n   //\"lifetimeMode\": 0,  // 0=delete app, 1=mark as staled\n   \"noScroll\": false,\n   \"scrollSpeed\": 100,\n   \"effect\": \"\",  // example \"PingPong\" https://blueforcer.github.io/awtrix-light/#/effects\n   \"effectSettings\":{\n        \"speed\":3,\n        \"palette\":\"Forest\",\n        \"blend\":true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/custom?name=yourappname",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"custom"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "yourappname"
+						}
+					]
+				},
+				"description": "**Guideline**: use APPs for something that is used regularly. Use NOTIFICATIONS for onetime or irregular messages.\n\n**Create App**: Incorporate the app name in the query parameter (name`=[appname]`).\n\n**Update App**: To refresh a custom page, dispatch a modified JSON object to the identical endpoint. The display updates instantly.\n\nCheck out the \"**add**\" API call to see a basic app."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP remove app",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/custom?name=yourappname",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"custom"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "yourappname"
+						}
+					]
+				},
+				"description": "To remove a custom app, dispatch an empty payload/body to the associated topic or URL."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP switch next",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/nextapp",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"nextapp"
+					]
+				},
+				"description": "Navigate to the next App.\n\nUse the `/api/loop` API endpoint to see the active Apps."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP switch prev",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/previousapp",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"previousapp"
+					]
+				},
+				"description": "Navigate to the preceding App.\n\nUse the `/api/loop` API endpoint to see the active Apps."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP switch to",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"yourappname\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/switch",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"switch"
+					]
+				},
+				"description": "Navigate to **a specific** app - specify the app name in the body.\n\nUse the `/api/loop` API endpoint to see the active Apps."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP switch time",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Time\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/switch",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"switch"
+					]
+				},
+				"description": "Navigate to the \"**Time**\" App."
+			},
+			"response": []
+		},
+		{
+			"name": "CUSTOM_APP switch battery",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Battery\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/switch",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"switch"
+					]
+				},
+				"description": "Navigate to the \"**Battery**\" App."
+			},
+			"response": []
+		},
+		{
+			"name": "NOTIFY",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"Welcome to the world of smart clocks!\",\n  \"rainbow\": true,\n  \"textCase\": 2,\n  \"duration\": 8\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/notify",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"notify"
+					]
+				},
+				"description": "**One-Time Notification**: Use the same JSON format as Apps.\n\nDirect your JSON object to `[PREFIX]/notify` or `http://[IP]/api/notify`.  \nNotifications have slightly different options compared to Apps. To get an understanding of the differences, see this [overview](https://blueforcer.github.io/awtrix-light/#/api?id=json-properties-1)."
+			},
+			"response": []
+		},
+		{
+			"name": "NOTIFY dismiss",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/notify/dismiss",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"notify",
+						"dismiss"
+					]
+				},
+				"description": "Easily dismiss a notification that was configured with `\"hold\": true`"
+			},
+			"response": []
+		},
+		{
+			"name": "NOTIFY full_options",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"NO..NOTIFY, Full options but not all are enabled\",\n  \"textCase\": 0,  // 0=global, 1=upper, 2=as is\n  \"topText\": false,  // default\n  \"textOffset\": 0,\n  \"center\": false,  // for non-scrollable text\n  \"color\": \"#FFFF00\",  // hex or rgb\n  \"blinkText\": 0,  // time in ms\n  \"fadeText\": 0,  // time in ms\n  \"background\": \"#808080\",\n  \"rainbow\": false,\n  \"icon\": \"EQ\",\n  \"pushIcon\": 1,  // 0=icon fixed, 1=icon moves and disappears, 2=icon moves but comes back\n  \"repeat\": 1,  // -1 = indefinetely, number is number of times before the app ends\n  \"duration\": 3,  // in seconds\n  // next options are specific to notifications\n   \"hold\": false,\n   \"sound\": \"\",\n   //\"rtttl\": \"theS:d=4,o=5,b=300:c.6,e6,f#6,8a6,g.6,e6,c6,8a,8f#,8f#,8f#,2g,8p,8p,8f#,8f#,8f#,8g,a#.,8c6,8c6,8c6,c6\",\n   \"loopSound\": false,\n   //\"bar\": [0,0,0,0,0,0,0,0,1,2,3,4],\n   //\"line\": [9,9,7,7,8,8,\"#FF00FF\"],\n   \"autoScale\": true,\n   \"progress\": 30,\n   \"progressC\": \"#FF0000\",\n   \"progressBC\": \"#C0C0C0\",\n   \"draw\": [  \n        {\"dc\": [28, 4, 3, \"#FF0000\"]},  \n        {\"dr\": [20, 4, 4, 4, \"#0000FF\"]},  \n        {\"dt\": [0, 0, \"Hello\", \"#000000\"]}  \n        ],  // \n   \"stack\": true,  // false=immediately replace current notification\n   \"wakeup\": false,  // true=wakeup matrix for the duration of the notification\n   \"noScroll\": false,\n   \"clients\": \"\",  // for forwarding notifications to other awtrix devices\n   \"scrollSpeed\": 100,\n   \"effect\": \"\",  // example \"PingPong\" https://blueforcer.github.io/awtrix-light/#/effects\n   \"effectSettings\":{\n        \"speed\":3,\n        \"palette\":\"Forest\",\n        \"blend\":true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/notify",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"notify"
+					]
+				},
+				"description": "_**This is like the \"NOTIFY\" API call but now with every single feature configured.**_**  \nOne-Time Notification**: Use the same JSON format as Apps.\n\nDirect your JSON object to `[PREFIX]/notify` or `http://[IP]/api/notify`.  \nNotifications have slightly different options compared to Apps. To get an understanding of the differences, see this [overview](https://blueforcer.github.io/awtrix-light/#/api?id=json-properties-1)."
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE firmware",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/doupdate",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"doupdate"
+					]
+				},
+				"description": "You can initiate the firmware update either through the update button in Home Assistant or with this API call."
+			},
+			"response": []
+		},
+		{
+			"name": "REBOOT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/reboot",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"reboot"
+					]
+				},
+				"description": "If you need to restart the Awtrix."
+			},
+			"response": []
+		},
+		{
+			"name": "SETTINGS 1 item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"TMODE\": 0  // changes the TIME app style (0-5)\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/settings",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"settings"
+					]
+				},
+				"description": "Adjust various \"system\" settings related to the display. This is the same as changing the settings through the web interface or the Awtrix app.\n\n_**This example**_: only changes 1 setting.  \nThe \"SETTINGS all\" API call has every configurable item."
+			},
+			"response": []
+		},
+		{
+			"name": "SETTINGS 1 item TimeColor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"TIME_COL\": \"#FFFFFF\"  // change TIME text color\n    // White   #FFFFFF\n    // Yellow  #FFFF00\t\n    // Orange  #F58231\n    // Red     #FF0000\n    // Maroon  #800000  \n    // Pink    #FF00FF\n    // Aqua    #00FFFF\n    // Blue    #0000FF\n    // Green   #00FF00\n    // Grey    #808080\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/settings",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"settings"
+					]
+				},
+				"description": "Adjust various \"system\" settings related to the display. This is the same as changing the settings through the web interface or the Awtrix app.\n\n_**This example**_: only changes 1 setting.  \nThe \"SETTINGS all\" API call has every configurable item."
+			},
+			"response": []
+		},
+		{
+			"name": "SETTINGS all (!)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// NOTE that this will overwrite all of your settings.\n{\n    \"ATIME\": 7,  // default (7) app duration in seconds\n    \"TEFF\": 1,  // default (1) app transition effect 0-10\n                // above https://blueforcer.github.io/awtrix-light/#/api?id=update\n    \"TSPEED\": 500,  // default (500) transition time in ms\n    \"TCOL\": \"#FFFFFF\",  // global text color\n    \"TMODE\": 0,  // changes the TIME app style (0-4)\n    \"CHCOL\": \"#FF0000\",  // time app calendar header color\n    \"CBCOL\": \"#FFFFFF\",  // time app calendar body color\n    \"CTCOL\": \"#000000\",  // time app calendar text color\n    \"WD\": true,  // weekday display\n    \"WDCA\": \"#FFFFFF\",  // Active weekday color\n    \"WDCI\": \"#808080\",  // Inactive weekday color\n    \"BRI\": 128,  // Display brightness (0-255)\n    \"ABRI\": true,  // Display Automatic brightness\n    \"ATRANS\": true,  // Automatic switch to next app=\n    // \"CCORRECTION\": [0,0,0],  // Color correction (RGB)\n    // \"CTEMP\": [0,0,0],  // Color temperature (RGB)\n    \"TFORMAT\": \"%H:%M\",  // Time format (see docs)\n    \"DFORMAT\": \"%m-%d\",  // Date format (see docs)\n    \"SOM\": true,  // Start of week on monday (false = sunday)\n    \"BLOCKN\": false,  // Block keys on top of device\n    \"UPPERCASE\": true,  // Force text in uppercase\n    \"TIME_COL\": \"#000000\",  // Time color (0 for global text color)\n    \"DATE_COL\": \"0\",  // Date color (0 for global text color)\n    \"TEMP_COL\": \"0\",  // Temperature color (0 for global text color)\n    \"HUM_COL\": \"0\",  // Humidity color (0 for global text color)\n    \"BAT_COL\": \"0\",  // Battery color (0 for global text color)\n    \"SSPEED\": 100,  // Modify scroll speed (% of original scroll speed)\n    \"TIM\": true,  // Enable/disable Time app\n    \"DAT\": true,  // Enable/disable Date app\n    \"HUM\": true,  // Enable/disable Humidity app\n    \"TEMP\": true,  // Enable/disable Temperature app\n    \"BAT\": true  // Enable/disable Battery app\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ulanzi_ip}}/api/settings",
+					"protocol": "http",
+					"host": [
+						"{{ulanzi_ip}}"
+					],
+					"path": [
+						"api",
+						"settings"
+					]
+				},
+				"description": "Adjust various \"system\" settings related to the display. This is the same as changing the settings through the web interface or the Awtrix app.\n\n_**This example**_: contains all configurable items. Note that making this API call could/will overwrite your current configuration.\n\n_NOTE_: this does not change things like username/pwd, wifi settings, IP settings."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ulanzi_ip",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
